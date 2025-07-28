@@ -50,7 +50,27 @@ Images 12, 13, 14 - Using the RV core and testbench provided to do a simple veri
 <img width="1920" height="966" alt="image" src="https://github.com/user-attachments/assets/b09d7798-d543-4682-b6d0-c11e4a81ce00" />
 <img width="1920" height="966" alt="image" src="https://github.com/user-attachments/assets/0ffe4ee2-a467-4c82-a890-b1aed7329540" />
 
+## Day 3 - Digital logic with TL-Verilog in Makerchip IDE
 
+Topics discussed:
+- Logic gates
+- Introduction to Makerchip IDE
+- State machines
+- Values in Verilog
+- Pipelines
+- Easy and safe retiming
+- Validity
 
+### Labs
 
+In these labs, I went ahead and developed the code and updated it on this GitHub, but didn't take screenshots, so I'll show a print of codes used for each calculator proposed in labs below
+
+Image 15 - First calculator proposed and using previous state
+<img width="1919" height="893" alt="day3-calculator" src="https://github.com/user-attachments/assets/39cf01a4-58ae-4276-96a6-302737870391" />
+
+Image 16 - Seeing how the error are ORed together in pipeline and propagate
+<img width="1919" height="899" alt="day2-pipelineerror" src="https://github.com/user-attachments/assets/ee5990a1-11dd-4dec-912c-2e5e7fc8b80d" />
+
+Image 17 - Proposed changes in calculator
+<img width="1919" height="906" alt="day2-calculatorandcounter" src="https://github.com/user-attachments/assets/3903536c-70d0-4a0b-a0a2-969d0b382705" />
 
