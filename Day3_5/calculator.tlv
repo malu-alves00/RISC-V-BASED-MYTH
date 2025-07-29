@@ -11,11 +11,12 @@
    |calc
       @1
          $reset = *reset;
-         
-         $out[31:0] = $reset ? 32'b0 : ($op[1:0] == 2'b00) ? $val1[31:0] + $val2[31:0] : ($op[1:0] == 2'b01) ? $val1[31:0] - $val2[31:0] : ($op[1:0] == 2'b10) ? $val1[31:0] * $val2[31:0] : ($op[1:0] == 2'b11) ? $val1[31:0] / $val2[31:0] : 31'b0;
-         $val1[31:0] = >>1$out;
+
+         $out[31:0] = ($reset || !$valid) ? 32'b0 : ($op[1:0] == 2'b00) ? $val1[31:0] + $val2[31:0] : ($op[1:0] == 2'b01) ? $val1[31:0] - $val2[31:0] : ($op[1:0] == 2'b10) ? $val1[31:0] * $val2[31:0] : ($op[1:0] == 2'b11) ? $val1[31:0] / $val2[31:0] : 31'b0;
+         $val1[31:0] = >>2$out;
          $val2[31:0] = $rand2[3:0];
          
+         $valid = $reset ? 0 : (>>1$cnt + 1);
          
 
       // Macro instantiations for calculator visualization(disabled by default).
