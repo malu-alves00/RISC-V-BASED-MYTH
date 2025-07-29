@@ -12,24 +12,30 @@
       @0
          $reset = *reset;
       @1
-         $valid = $reset ? 'b0 : >>1$valid + 1;
+         $valid = $reset ? 0 : >>1$valid + 1;
          $valid_or_reset = $valid || $reset;
-         $val1[31:0] = >>2$out;
+         $val1[31:0] = >>2$out[31:0];
          $val2[31:0] = $rand2[3:0];
       ?$valid_or_reset
          @1
-            $sum = $val1 + $val2;
-            $sub = $val1 - $val2;
-            $mult = $val1 * $val2;
-            $div = $val1 / $val2;
+            $sum[31:0] = $val1 + $val2;
+            $sub[31:0] = $val1 - $val2;
+            $mult[31:0] = $val1 * $val2;
+            $div[31:0] = $val1 / $val2;
          
          
          @2
-            $out[31:0] = $reset ? 'b0 :
-                         ($op[1:0] == 2'b00) ? $sum :
-                         ($op[1:0] == 2'b01) ? $sub :
-                         ($op[1:0] == 2'b10) ? $mult :
-                         ($op[1:0] == 2'b11) ? $div : 32'b0;
+            
+            $mem[31:0] = $reset ? 32'b0 :
+                        ($op[2:0] == 3'b100) ? >>2$mem:
+                        ($op[2:0] == 3'b101) ? >>2$out : $mem;
+            
+            $out[31:0] = $reset ? 32'b0 :
+                         ($op[2:0] == 3'b000) ? $sum :
+                         ($op[2:0] == 3'b001) ? $sub :
+                         ($op[2:0] == 3'b010) ? $mult :
+                         ($op[2:0] == 3'b011) ? $div :
+                         ($op[2:0] == 3'b100) ? >>2$mem : $out;
          
 
       // Macro instantiations for calculator visualization(disabled by default).
