@@ -101,3 +101,5 @@ Image 25 - To finalize this implementation, branch was also added. The branch ta
 
 Image 26 - This was tested using lines of code already provided by the instructor
 <img width="1189" height="588" alt="day4-8" src="https://github.com/user-attachments/assets/896f6cbc-1cd9-4c5a-b766-bbb3aaad6652" />
+
+## Day 5 - Pipelined RISC-V CPU
