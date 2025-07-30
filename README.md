@@ -74,3 +74,30 @@ Image 16 - Seeing how the error are ORed together in pipeline and propagate
 Image 17 - Proposed changes in calculator
 <img width="1919" height="906" alt="day2-calculatorandcounter" src="https://github.com/user-attachments/assets/3903536c-70d0-4a0b-a0a2-969d0b382705" />
 
+Image 18 - Added a memory element (as shown in the mux) to the calculator and the concept of validity, after learning those two 
+<img width="1919" height="911" alt="day3-calcmem1" src="https://github.com/user-attachments/assets/19e448de-e61e-4dca-b743-5545bb55dbe6" />
+
+## Day 4 - Basic RISC-V CPU
+
+The labs proposed to create a simple RISC-V CPU implementation to serve as a base for future pipeline implementation.
+
+Image 19 - The first step was to create the program counter (branch code already included in print, which will be discussed further). The value of the PC passes to the instruction memory and the data is read in the next step
+<img width="979" height="296" alt="day4-1" src="https://github.com/user-attachments/assets/7b710128-4066-462b-8a59-30b8b15fd05c" />
+
+Images 20, 21, 22 - Then, the instruction was identified as to type (R,S,I,B,J,U) and the immediate and decode bits were built based on that. The validity of each type was also verified
+<img width="1190" height="682" alt="day4-2" src="https://github.com/user-attachments/assets/6db80fa3-6275-45e3-b12a-fa9444cbc464" />
+<img width="868" height="367" alt="day4-3" src="https://github.com/user-attachments/assets/77633401-9563-47c0-97eb-037aad2f0d62" />
+<img width="949" height="346" alt="day4-4" src="https://github.com/user-attachments/assets/6698ec57-8636-4c2f-9ffa-d0de19191243" />
+
+Image 23 - The instruction was decoded based on the funct7, funct3 and opcode fields
+<img width="756" height="403" alt="day4-5" src="https://github.com/user-attachments/assets/6aa90762-f526-4b1b-89f9-0e67a41745e7" />
+
+Image 24 - The register file was also added, and its read data was connected to the input of the ALU. The output of the ALU was connected to the write data of the RF
+
+<img width="759" height="537" alt="day4-6" src="https://github.com/user-attachments/assets/1b06ed6a-68cb-4a12-a962-77fb69197d0b" />
+
+Image 25 - To finalize this implementation, branch was also added. The branch taken variable is then read by the PC
+<img width="1029" height="234" alt="day4-7" src="https://github.com/user-attachments/assets/d3016622-4799-4146-8a2f-9d222239ca19" />
+
+Image 26 - This was tested using lines of code already provided by the instructor
+<img width="1189" height="588" alt="day4-8" src="https://github.com/user-attachments/assets/896f6cbc-1cd9-4c5a-b766-bbb3aaad6652" />
