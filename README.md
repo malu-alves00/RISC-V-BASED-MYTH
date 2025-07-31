@@ -103,3 +103,38 @@ Image 26 - This was tested using lines of code already provided by the instructo
 <img width="1189" height="588" alt="day4-8" src="https://github.com/user-attachments/assets/896f6cbc-1cd9-4c5a-b766-bbb3aaad6652" />
 
 ## Day 5 - Pipelined RISC-V CPU
+
+During this part of the workshop, we developed a pipeline and implemented other instructions over the previous basic core. 
+
+Image 27 - For the first step of the pipeline, the PC had to account for the branch, jump and load instructions. The instruction memory is also read
+<img width="824" height="424" alt="day5-1" src="https://github.com/user-attachments/assets/1273300a-f98b-48b4-861f-0551f2b2c55a" />
+
+Images 28, 29 - The beginning of the decoder is basically the same, still on the second step of the pipeline (@1)
+<img width="1161" height="783" alt="day5-2" src="https://github.com/user-attachments/assets/2f5f706f-ccd6-47a7-a741-b0f4cfc08e4d" />
+<img width="973" height="620" alt="day5-3" src="https://github.com/user-attachments/assets/50ff5d6c-330b-40e4-917e-3276cd4e672e" />
+
+Images 30, 31 - Here, we can see all of the instructions supported by the core being decoded
+<img width="565" height="681" alt="day5-4" src="https://github.com/user-attachments/assets/bf27647f-a2df-461c-b38b-d2c87480e855" />
+<img width="584" height="540" alt="day5-5" src="https://github.com/user-attachments/assets/dcfbbdd2-88ba-44d0-980b-b684544c6a17" />
+
+Images 32 - In the third step of the pipeline, the register file is read. The srcx_value had to be updated to account for the read-after-write hazard
+<img width="961" height="496" alt="day5-6" src="https://github.com/user-attachments/assets/90f4d06b-aef4-44e8-8825-e3b38867ca76" />
+
+Image 33 - In the fourth step, the ALU was updated for all of the added instructions
+<img width="1191" height="773" alt="day5-7" src="https://github.com/user-attachments/assets/e24e61d3-780b-4e16-ac26-4e3b3590cbd6" />
+
+Image 34 - Still in the fourth step, we deal with the register file write logic, which can only happen if 2 steps behind a load instruction was issued, or if the writing is valid. We also create a valid logic that blocks the pipeline when there's a shadow of a load, branch or jump. Lastly, the type of branch is computed to determine if it's taken or not
+<img width="1063" height="626" alt="day5-8" src="https://github.com/user-attachments/assets/e53d1a6a-f37c-47f3-a5b6-bfd4c1d9cef1" />
+
+Image 35 - In the last step of the pipeline, we deal with the data memory, which can be: written if the instruction issued in this step is a store and valid; read if the instruction issued in this step is a load. The address are the first 4 bits of result that comes out of the ALU, and the write data comes from src2_value, linked to rs2
+<img width="1077" height="324" alt="day5-9" src="https://github.com/user-attachments/assets/761824b7-6c4f-4c26-a622-f1dae434bc44" />
+
+Image 36 - We used the register file and memories disponibilized by the workshop
+<img width="1421" height="124" alt="day5-10" src="https://github.com/user-attachments/assets/279f2c76-2de0-40af-9bb9-a06993b6ca3e" />
+
+Image 37 - To test the added memory, I added store and load word instructions
+<img width="1179" height="675" alt="day5-11" src="https://github.com/user-attachments/assets/7a6a2717-b6b8-4d59-b5b2-53d0ba7826ae" />
+
+Image 38 - Final diagram of the core, created in Makerchip
+<img width="555" height="806" alt="day5-12" src="https://github.com/user-attachments/assets/3030d855-5429-4526-afe6-1d1561031105" />
+
