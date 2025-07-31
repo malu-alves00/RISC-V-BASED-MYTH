@@ -136,5 +136,6 @@ Image 37 - To test the added memory, I added store and load word instructions
 <img width="1179" height="675" alt="day5-11" src="https://github.com/user-attachments/assets/7a6a2717-b6b8-4d59-b5b2-53d0ba7826ae" />
 
 Image 38 - Final diagram of the core, created in Makerchip
+
 <img width="555" height="806" alt="day5-12" src="https://github.com/user-attachments/assets/3030d855-5429-4526-afe6-1d1561031105" />
 
